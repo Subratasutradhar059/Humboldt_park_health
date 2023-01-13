@@ -20,6 +20,8 @@ import Text from '../../Components/common/Text';
 
 const Signup = ({navigation}) => {
   const [loader, setLoader] = useState(false);
+
+  
   const [checked, setChecked] = useState(true);
 
   const SignInSchema = Yup.object().shape({
