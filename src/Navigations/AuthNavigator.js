@@ -5,6 +5,7 @@ import Signin from '../Screens/Signin';
 import Signup from '../Screens/Signup';
 import Otp from '../Screens/Otp';
 import Addprofile from '../Screens/Addprofile';
+import Wellcomepage from '../Screens/Wellcomepage';
 
 
 
@@ -18,6 +19,7 @@ const AuthNavigator = () => {
        <AuthStack.Screen name="Signup" component={Signup}/>             
        <AuthStack.Screen name="Otp" component={Otp}/>             
        <AuthStack.Screen name="Addprofile" component={Addprofile}/>             
+       <AuthStack.Screen name="Wellcomepage" component={Wellcomepage}/>             
       </AuthStack.Navigator>
     
   );

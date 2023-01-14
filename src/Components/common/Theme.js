@@ -6,6 +6,7 @@ const Theme =  {
  white:'#ffffff',
  black:"#000"
 
+
 }
 
 export default Theme

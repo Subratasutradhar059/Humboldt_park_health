@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
+import Theme from '../Theme'
 // import LinearGradient from 'react-native-linear-gradient'
 // import { Colors, Fonts, Sizes } from "../constant/style";
 
@@ -34,5 +35,13 @@ const styles = StyleSheet.create({
     minWidth: '100%',
     alignSelf: "center",
     borderRadius: 10,
+    shadowColor: Theme.black,
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    elevation: 10,
   },
 })
