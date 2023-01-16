@@ -4,7 +4,9 @@ const Theme =  {
  gray:'#3D3D3D',
  lightgray:"#aeaeae",
  white:'#ffffff',
- black:"#000"
+ black:"#000",
+ ScreenBackground:"#e3e3e3",
+ RightIcon:"#414141"
 
 
 }
