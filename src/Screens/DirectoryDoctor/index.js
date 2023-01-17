@@ -17,74 +17,61 @@ import Text from '../../Components/common/Text';
 import NavigationHeaders from '../../Components/common/NavigationHeaders';
 import Feather from 'react-native-vector-icons/Feather';
 
-const Directory = ({navigation}) => {
+const DirectoryDoctor = ({navigation}) => {
   const [loader, setLoader] = useState(false);
   const [checked, setChecked] = useState(true);
   const [selected, setSelected] = useState('');
 
   const AllReferrals = [
-
-    
-
-
-
-
-
-
     {
       id: 1,
       Doctor_Name: 'William A. Abdu',
-      Doctor_Spe: 'Anesthesiology',
+      Doctor_Spe: 'Orthopaedics',
     },
     {
       id: 2,
       Doctor_Name: 'William A. Abdu',
-      Doctor_Spe: 'Burn Center',
+      Doctor_Spe: 'Orthopaedics',
     },
     {
       id: 3,
       Doctor_Name: 'William A. Abdu',
-      Doctor_Spe: 'Cardiology',
+      Doctor_Spe: 'Orthopaedics',
     },
     {
       id: 4,
       Doctor_Name: 'William A. Abdu',
-      Doctor_Spe: 'Cardiothoracic Sergery',
+      Doctor_Spe: 'Orthopaedics',
     },
     {
       id: 5,
       Doctor_Name: 'William A. Abdu',
-      Doctor_Spe: 'Critical Care Medicine',
+      Doctor_Spe: 'Orthopaedics',
     },
     {
       id: 6,
       Doctor_Name: 'William A. Abdu',
-      Doctor_Spe: 'Dentisty',
+      Doctor_Spe: 'Orthopaedics',
     },
     {
       id: 7,
       Doctor_Name: 'William A. Abdu',
-      Doctor_Spe: 'Emergency Medicine',
+      Doctor_Spe: 'Orthopaedics',
     },
     {
       id: 8,
       Doctor_Name: 'William A. Abdu',
-      Doctor_Spe: 'Endocrinology',
+      Doctor_Spe: 'Orthopaedics',
     },
     {
       id: 9,
       Doctor_Name: 'William A. Abdu',
       Doctor_Spe: 'Orthopaedics',
     },
-    {
-      id: 10,
-      Doctor_Name: 'William A. Abdu',
-      Doctor_Spe: 'Diabetes',
-    },
   ];
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: Theme.white}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: Theme.ScreenBackground}}>
       {loader == true ? (
         <View style={styles.LoadarView}>
           <ActivityIndicator size={'large'} color={Theme.primary} />
@@ -93,42 +80,15 @@ const Directory = ({navigation}) => {
         <>
           <StatusBar backgroundColor={Theme.white} />
 
-          {/* <View>
+          <View>
             <NavigationHeaders
               onPress={() => {
                 navigation.goBack();
               }}
-              title="Bookings"
+              title="Orthopaedics"
             />
-          </View> */}
-
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              paddingHorizontal: 20,
-              paddingVertical: 20,
-              backgroundColor: Theme.white,
-            }}>
-            <Image
-              source={require('../../Assets/Images/AppLogo.png')}
-              style={styles.appLogoStyle}
-              resizeMode="contain"
-            />
-            <Text
-              style={{
-                color: '#008EAA',
-                fontSize: 16,
-                fontWeight: '700',
-                marginLeft: -90,
-              }}>
-              Directory
-            </Text>
-            <View>
-              <Text></Text>
-            </View>
           </View>
+
           {/* 
           <View
             style={{
@@ -183,7 +143,7 @@ const Directory = ({navigation}) => {
           <View styles={{}}>
             <FlatList
               data={AllReferrals}
-              style={{marginBottom: 90}}
+              style={{marginBottom: 60}}
               // showsVerticalScrollIndicator={false}
               // keyExtractor={({ item, numbers }) => numbers}
               scrollIndicatorColor={'red'}
@@ -211,36 +171,87 @@ const Directory = ({navigation}) => {
                       },
                     ]}
                     onPress={() => {
-                      navigation.navigate('DirectoryDoctor', {
+                      navigation.navigate('DirectoryDoctorRefer', {
                         data: item,
                       });
                       // setSelected(item.id);
                     }}>
-                    {/* <View
+                    <View style={{paddingHorizontal: 15}}>
+                      <Image
+                        source={require('../../Assets/Images/referrals.png')}
+                        style={{width: 70, height: 70, borderRadius: 100}}
+                        resizeMode="contain"
+                      />
+                    </View>
+                    <View
                       style={{
                         flexDirection: 'row',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        // width: '70%',
-                      }}> */}
+                        width: '70%',
+                      }}>
+                      <View>
+                        <Text
+                          style={[
+                            styles.DoctorName,
+                            {
+                              color: selected === item.id ? '#fff' : '#3F3F3F',
+                            },
+                          ]}>
+                          Dr {item.Doctor_Name}
+                        </Text>
 
-                    <Text
-                      style={[
-                        styles.DoctorName,
-                        {
-                          color: selected === item.id ? '#fff' : Theme.lightgray,
-                        },
-                      ]}>
-                      {item.Doctor_Spe}
-                    </Text>
+                        <View
+                          style={{flexDirection: 'row', alignItems: 'center'}}>
+                          <Image
+                            source={require('../../Assets/Images/specialilyIcon.png')}
+                            style={{width: 12, height: 12}}
+                          />
+                          <Text
+                            style={[
+                              styles.Doctorspecialily,
+                              {
+                                color:
+                                  selected === item.id ? '#fff' : '#3F3F3F',
+                              },
+                            ]}>
+                            {item.Doctor_Spe}
+                          </Text>
+                        </View>
 
-                    <Feather
-                      name="chevron-right"
-                      color={selected === item.id ? '#fff' : Theme.RightIcon}
-                      size={30}
-                    />
-
-                    {/* </View> */}
+                        <View
+                          style={{flexDirection: 'row', alignItems: 'center'}}>
+                          <View
+                            style={{
+                              width: 13,
+                              height: 13,
+                              backgroundColor:
+                                selected === item.id ? '#fff' : Theme.secondary,
+                              borderRadius: 100,
+                            }}
+                          />
+                          <Text
+                            style={[
+                              styles.Doctorspecialily,
+                              {
+                                color:
+                                  selected === item.id ? '#fff' : '#3F3F3F',
+                              },
+                            ]}>
+                             Dr {item.Doctor_Name}
+                          </Text>
+                        </View>
+                      </View>
+                      <View>
+                        <Feather
+                          name="chevron-right"
+                          color={
+                            selected === item.id ? '#fff' : Theme.RightIcon
+                          }
+                          size={30}
+                        />
+                      </View>
+                    </View>
                   </TouchableOpacity>
                 );
               }}
@@ -269,31 +280,20 @@ const styles = StyleSheet.create({
     height: 310,
   },
   ListStyle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    height: 60,
+    height: 90,
     backgroundColor: Theme.white,
     margin: 10,
     marginHorizontal: 15,
     borderRadius: 10,
-
+    flexDirection: 'row',
+    alignItems: 'center',
     // justifyContent:"space-between"
-    shadowColor: Theme.black,
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.34,
-    shadowRadius: 6.27,
-    elevation: 10,
   },
   DoctorName: {
     fontSize: 16,
     fontWeight: '700',
     fontFamily: 'Raleway-Regular',
     lineHeight: 19,
-    marginLeft:20
   },
   Doctorspecialily: {
     paddingHorizontal: 8,
@@ -333,7 +333,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Directory;
+export default DirectoryDoctor;
 
 {
   /*  */

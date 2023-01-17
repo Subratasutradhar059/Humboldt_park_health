@@ -8,6 +8,7 @@ import {
   TextInput,
   ActivityIndicator,
   FlatList,
+  ScrollView
 } from 'react-native';
 import React, {useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -17,6 +18,7 @@ import Text from '../../Components/common/Text';
 import NavigationHeaders from '../../Components/common/NavigationHeaders';
 import Entypo from 'react-native-vector-icons/Entypo';
 import GlobalButton from '../../Components/common/GlobalButton/GlobalButton';
+
 
 const ReferralDoctor = ({navigation}) => {
   const [loader, setLoader] = useState(false);
@@ -80,6 +82,7 @@ const ReferralDoctor = ({navigation}) => {
       ) : (
         <>
           <StatusBar backgroundColor={Theme.white} />
+          <ScrollView>
 
           <View>
             <NavigationHeaders
@@ -113,7 +116,7 @@ const ReferralDoctor = ({navigation}) => {
                 marginHorizontal: 20,
               }}>
               <View>
-                <View style={{flexDirection: 'row'}}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <Text style={[styles.DoctorName, ,]}>Dr William A. Abdu</Text>
                   <View style={{paddingHorizontal: 40}}>
                     <Entypo
@@ -154,13 +157,370 @@ const ReferralDoctor = ({navigation}) => {
             </View>
           </View>
 
-          <View style={{marginHorizontal:20}}>
+          <View style={{marginHorizontal: 20}}>
             <GlobalButton
-              title={'Continue'}
+              title={'Call now'}
               inlineStyle={{marginTop: 10}}
               // onPress={() => handleSubmit()}
             />
           </View>
+
+          <View
+            style={{
+              backgroundColor: Theme.primary,
+              width: '100%',
+              height: 40,
+              marginTop: 20,
+              alignItems: 'flex-start',
+              justifyContent: 'flex-start',
+            }}>
+            <Text
+              Bold
+              style={{
+                paddingHorizontal: 20,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '500',
+                color: '#fff',
+              }}>
+              Doctor’s Information
+            </Text>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Number
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              123-265-589
+            </Text>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Email
+            </Text>
+            <Text
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              Adim.999@gmail.com
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+                // paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Backline
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                // paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              ................
+            </Text>
+          </View>
+
+          <View
+            style={{
+              backgroundColor: Theme.primary,
+              width: '100%',
+              height: 40,
+              marginTop: 10,
+              alignItems: 'flex-start',
+              justifyContent: 'flex-start',
+            }}>
+            <Text
+              Bold
+              style={{
+                paddingHorizontal: 20,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '500',
+                color: '#fff',
+              }}>
+              Patient’s Information
+            </Text>
+          </View>
+
+
+
+
+
+
+
+
+
+
+
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+             Name
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              Jone Doe
+            </Text>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Address
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              118 Bouleverd Saint-Germain
+            </Text>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+             Number
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              9865454145
+            </Text>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+             Email
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              admin@gmail.com
+            </Text>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+             Disease
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              Mental Disorders
+            </Text>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Status
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              Under treatment
+            </Text>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Email 2
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              admin099@gmail.com
+            </Text>
+          </View>
+
+         
+          
+
+
+
+
+
+
+
+
+
+          </ScrollView>
+
         </>
       )}
     </SafeAreaView>
@@ -200,6 +560,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontFamily: 'Raleway-Regular',
     lineHeight: 19,
+    marginBottom: 5,
   },
 });
 
