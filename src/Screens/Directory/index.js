@@ -285,7 +285,7 @@ const styles = StyleSheet.create({
       height: 5,
     },
     shadowOpacity: 0.34,
-    shadowRadius: 6.27,
+    shadowRadius: 10.27,
     elevation: 10,
   },
   DoctorName: {

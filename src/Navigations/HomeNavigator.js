@@ -4,7 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TabNav from './TabNav';
 import ReferralDoctor from '../Screens/ReferralDoctor';
 import DirectoryDoctor from '../Screens/DirectoryDoctor';
-import DirectoryDoctorRefer from '../Screens/DirectoryDoctorRefer';
+import DirectoryDoctorProfile from '../Screens/DirectoryDoctorProfile';
+import ReferToDoctor from '../Screens/ReferToDoctor';
+
 
 
 
@@ -16,7 +18,8 @@ const HomeNavigator = () => {
       <HomeStack.Screen name="TavNave" component={TabNav}/>
       <HomeStack.Screen name="ReferralDoctor" component={ReferralDoctor}/>
       <HomeStack.Screen name="DirectoryDoctor" component={DirectoryDoctor}/>
-      <HomeStack.Screen name="DirectoryDoctorRefer" component={DirectoryDoctorRefer}/>
+      <HomeStack.Screen name="DirectoryDoctorProfile" component={DirectoryDoctorProfile}/>
+      <HomeStack.Screen name="ReferToDoctor" component={ReferToDoctor}/>
       
       </HomeStack.Navigator>
     

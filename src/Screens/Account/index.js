@@ -25,8 +25,7 @@ const Account = ({navigation}) => {
   const [checked, setChecked] = useState(true);
 
   return (
-    <SafeAreaView
-      style={{flex: 1, backgroundColor: Theme.white, }}>
+    <SafeAreaView style={{flex: 1, backgroundColor: Theme.white}}>
       {loader == true ? (
         <View style={styles.LoadarView}>
           <ActivityIndicator size={'large'} color={Theme.white} />
@@ -44,41 +43,350 @@ const Account = ({navigation}) => {
             />
           </View> */}
 
-          <View style={{flexDirection: 'row', justifyContent: "space-between",alignItems:"center",paddingHorizontal:20}}>
-          <Image
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              paddingHorizontal: 20,
+            }}>
+            <Image
               source={require('../../Assets/Images/AppLogo.png')}
               style={styles.appLogoStyle}
               resizeMode="contain"
             />
-            <Text style={{color: '#008EAA',fontSize: 16, fontWeight: '700',marginLeft:-90}}>
-            Account
+            <Text
+              style={{
+                color: '#008EAA',
+                fontSize: 16,
+                fontWeight: '700',
+                marginLeft: -90,
+              }}>
+              Account
             </Text>
-            <View><Text></Text></View>            
+            <View>
+              <Text></Text>
+            </View>
           </View>
 
-          <View style={{backgroundColor:Theme.primary,width:"100%",height:55,marginVertical:10 }}>
-            <Text Bold style={{marginHorizontal:10,marginTop:15,fontWeight:"600",color:"#fff"}}>You are not verified ! </Text>
+          <View
+            style={{
+              backgroundColor: Theme.primary,
+              width: '100%',
+              height: 40,
+              marginTop: 10,
+              alignItems: 'flex-end',
+              justifyContent: 'flex-end',
+            }}>
+            <Text
+              Bold
+              style={{
+                paddingHorizontal: 20,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '500',
+                color: '#fff',
+              }}>
+              Edit
+            </Text>
           </View>
 
+          <View
+            style={{
+              // backgroundColor: 'red',
+              marginVertical: 40,
+              // width: '100%',
+              // width: 150,
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative',
+              alignSelf: 'center',
+            }}>
+            <Image
+              source={require('../../Assets/Images/referrals.png')}
+              style={[styles.ProfileImage]}
+            />
 
-          <View style={{alignItems:"center",marginTop:80}}>
-{/* 
-            <Image source={require('../../Assets/Images/WatingImage.png')}
-              style={styles.WaitingImage}
-              resizeMode="contain"
-            /> */}
-            <Text style={{color:Theme.gray,fontWeight:"600"}}>Your account is not verified yet..</Text>
+            <View
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                right: 20,
+                backgroundColor: Theme.secondary,
+                padding: 6,
+                borderRadius: 100,
+                borderWidth: 3,
+                borderColor: '#fff',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Image
+                source={require('../../Assets/Images/editicon.png')}
+                style={styles.iconStyle}
+                resizeMode="contain"
+              />
+            </View>
+          </View>
+          <View style={{alignItems: 'center'}}>
+            <Text
+              style={{
+                paddingHorizontal: 20,
+                // paddingVertical: 10,
+                // marginTop: 15,
+                fontSize: 20,
+                fontWeight: '700',
+                color: Theme.lightgray,
+              }}>
+              Dr William A. Abdu
+            </Text>
           </View>
 
-          <Text>Account</Text>
+          <View
+            style={{
+              backgroundColor: Theme.primary,
+              width: '100%',
+              height: 40,
+              marginTop: 20,
+              alignItems: 'flex-start',
+              justifyContent: 'flex-start',
+            }}>
+            <Text
+              Bold
+              style={{
+                paddingHorizontal: 20,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '500',
+                color: '#fff',
+              }}>
+              MY CONTACT INFORMATION
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              paddingVertical: 10,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
 
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Cardiac
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                // paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              Imaging
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              paddingVertical: 10,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
 
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Cardiac
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                // paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              Imaging
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              paddingVertical: 10,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
 
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Cardiac
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                // paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              Imaging
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              paddingVertical: 10,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
 
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Cardiac
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                // paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              Imaging
+            </Text>
+          </View>
 
+          <View
+            style={{
+              backgroundColor: Theme.primary,
+              width: '100%',
+              height: 40,
+              // marginTop: 10,
+              alignItems: 'flex-start',
+              justifyContent: 'flex-start',
+            }}>
+            <Text
+              Bold
+              style={{
+                paddingHorizontal: 20,
+                paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '500',
+                color: '#fff',
+              }}>
+              MY SETTINGS
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              paddingVertical: 10,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
 
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Cardiac
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                // paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              Imaging
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              paddingVertical: 10,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
 
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Cardiac
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                // paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              Imaging
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              paddingVertical: 10,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
 
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Cardiac
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                // paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              Imaging
+            </Text>
+          </View>
         </>
       )}
     </SafeAreaView>
@@ -97,10 +405,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Theme.white,
   },
-  WaitingImage:{
-    width:350,
-    height:310
-  }
+  WaitingImage: {
+    width: 350,
+    height: 310,
+  },
+  ProfileImage: {
+    width: 150,
+    height: 150,
+    borderRadius: 10,
+    alignSelf: 'center',
+    resizeMode: 'contain',
+    position: 'relative',
+    borderRadius: 100,
+  },
+  iconStyle: {
+    width: 12,
+    height: 12,
+    alignSelf: 'center',
+    // resizeMode: 'contain',
+    position: 'relative',
+  },
 });
 
 export default Account;

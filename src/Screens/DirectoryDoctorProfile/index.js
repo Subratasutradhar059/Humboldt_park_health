@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
   FlatList,
   ScrollView,
+  Linking
 } from 'react-native';
 import React, {useState} from 'react';
 import Feather from 'react-native-vector-icons/Feather';
@@ -20,7 +21,7 @@ import NavigationHeaders from '../../Components/common/NavigationHeaders';
 import Entypo from 'react-native-vector-icons/Entypo';
 import GlobalButton from '../../Components/common/GlobalButton/GlobalButton';
 
-const DirectoryDoctorRefer = ({navigation}) => {
+const DirectoryDoctorProfile = ({navigation}) => {
   const [loader, setLoader] = useState(false);
   const [checked, setChecked] = useState(true);
   const [selected, setSelected] = useState('');
@@ -162,7 +163,11 @@ const DirectoryDoctorRefer = ({navigation}) => {
               <GlobalButton
                 title={'Refer to this doctor'}
                 inlineStyle={{marginTop: 10, backgroundColor: Theme.secondary}}
-                // onPress={() => handleSubmit()}
+                onPress={() => {
+                  navigation.navigate('ReferToDoctor', {
+                    // data: item,
+                  });            
+                }}
               />
             </View>
 
@@ -170,7 +175,7 @@ const DirectoryDoctorRefer = ({navigation}) => {
               <GlobalButton
                 title={'Call now'}
                 inlineStyle={{marginTop: 10, backgroundColor: Theme.secondary}}
-                // onPress={() => handleSubmit()}
+                onPress={()=>{Linking.openURL('9898989898');}}
               />
             </View>
 
@@ -560,7 +565,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DirectoryDoctorRefer;
+export default DirectoryDoctorProfile;
 
 {
   /*  */

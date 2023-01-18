@@ -171,7 +171,7 @@ const DirectoryDoctor = ({navigation}) => {
                       },
                     ]}
                     onPress={() => {
-                      navigation.navigate('DirectoryDoctorRefer', {
+                      navigation.navigate('DirectoryDoctorProfile', {
                         data: item,
                       });
                       // setSelected(item.id);
