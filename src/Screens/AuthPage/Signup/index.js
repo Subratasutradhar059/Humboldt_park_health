@@ -69,7 +69,7 @@ const Signup = ({navigation, route}) => {
       <KeyboardAwareScrollView
         style={styles.container}
         contentContainerStyle={{flexGrow: 1}}
-        header
+        header 
         
         >
         <View style={styles.container}>
