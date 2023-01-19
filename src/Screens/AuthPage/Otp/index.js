@@ -13,34 +13,84 @@ import {
   ActivityIndicator,
   Text,
   Button,
+  Alert
 } from 'react-native';
 import React, {Component, useState, useContext} from 'react';
-import GlobalButton from '../../Components/common/GlobalButton/GlobalButton';
+import GlobalButton from '../../../Components/common/GlobalButton/GlobalButton';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Theme from '../../Components/common/Theme';
+import Theme from '../../../Components/common/Theme';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
-const Otp = ({navigation}) => {
+const Otp = ({navigation,route}) => {
   const [loader, setLoader] = useState(false);
   const [firstDigit, setFirstDigit] = useState('');
   const [secondDigit, setSecondDigit] = useState('');
   const [thirdDigit, setThirdDigit] = useState('');
   const [forthDigit, setForthDigit] = useState('');
 
-  //   const otpValidation = () => {
-  //     if (firstDigit == '') {
-  //       alert('enter first number');
-  //     } else if (secondDigit == '') {
-  //       alert('enter second number');
-  //     } else if (thirdDigit == '') {
-  //       alert('enter third number');
-  //     } else if (forthDigit == '') {
-  //       alert('enter fourth number');
-  //     }
-  //   };
+  const otpValidation = () => {
+    if (firstDigit == '') {
+      alert('enter first number');
+    } else if (secondDigit == '') {
+      alert('enter second number');
+    } else if (thirdDigit == '') {
+      alert('enter third number');
+    } else if (forthDigit == '') {
+      alert('enter fourth number');
+    }
+  };
+  let checked = route?.params?.checked;
+  console.log("kjgjhgjh",checked)
+
+  const VerifyOtp = () => {
+    if (firstDigit && secondDigit && thirdDigit && forthDigit) {
+
+    
+      navigation.navigate('Addprofile',{checked:checked});
+    }
+
+    // console.log('user_Details', data);
+    // // setLoader(true);
+    // let Payload = {
+    //   mobile_number: data?.mobile_number,
+    //   user_otp: firstDigit + secondDigit + thirdDigit + forthDigit,
+    // };
+    // // console.log('OTP Data', data);
+
+    // PostMethode('auths/verify_otp', Payload)
+    //   .then(Response => {
+    //     console.log('otp Response', Response);
+    //     if (Response.status === 'success') {
+    //       authContext.signIn({
+    //         data: Response.data.rows[0],
+    //       });
+
+    //       //  navigation.navigate('HomeScreen');
+    //     } else {
+    //       console.log('Response.message', Response.data.message);
+    //       // Alert.alert(Response.data.message);
+    //     }
+    //     // if (Response.status === 'success') {
+    //     //   authContext.signIn({
+    //     //     data: Response.data.rows[0],
+    //     //   });
+    //     //   navigation.navigate('HomeScreen');
+    //     // } else {
+    //     //   console.log('Response.message', Response.data.message);
+    //     //   alert(Response.message);
+    //     // }
+    //   })
+
+    //   .catch(error => {
+    //     setLoader(false);
+    //     alert(error);
+    //     console.log('error2', error);
+    //   });
+  };
 
   return (
     <SafeAreaView
-      style={{flex: 1, backgroundColor:Theme.white, paddingHorizontal: 20}}>
+      style={{flex: 1, backgroundColor: Theme.white, paddingHorizontal: 20}}>
       {loader == true ? (
         <View style={styles.LoaderView}>
           <ActivityIndicator size={'large'} color={Theme.white} />
@@ -52,7 +102,7 @@ const Otp = ({navigation}) => {
           {/* Logo */}
 
           <Image
-            source={require('../../Assets/Images/AppLogo.png')}
+            source={require('../../../Assets/Images/AppLogo.png')}
             style={styles.appLogoStyle}
             resizeMode="contain"
           />
@@ -60,6 +110,7 @@ const Otp = ({navigation}) => {
           {/* Background View */}
 
           <View style={styles.BlueBackground}>
+            {/* <KeyboardAwareScrollView> */}
             {/* Input */}
 
             <View style={{paddingHorizontal: 20}}>
@@ -74,8 +125,6 @@ const Otp = ({navigation}) => {
                     secondTextInput.focus();
                   }}
                   keyboardType="numeric"
-              
-                  
                 />
 
                 <TextInput
@@ -127,21 +176,24 @@ const Otp = ({navigation}) => {
               <GlobalButton
                 title={'Continue'}
                 inlineStyle={styles.buttonStyle}
-                // onPress={() => handleSubmit()}
-                onPress={() => navigation.navigate("Addprofile")}
+                onPress={() => VerifyOtp()}
               />
             </View>
+            {/* </KeyboardAwareScrollView> */}
 
-            <Text style={styles.EnterOtp}>Enter the OTP to sign in</Text>            
+            <Text style={styles.EnterOtp}>Enter the OTP to sign in</Text>
 
             <View style={styles.BottomPart}>
-              <Text style={styles.bottomContent}> Didn’t receive the OTP code</Text>
+              <Text style={styles.bottomContent}>
+                {' '}
+                Didn’t receive the OTP code
+              </Text>
 
               <TouchableOpacity
                 onPress={() => {
                   navigation.navigate('Signup');
                 }}>
-                <Text style={[{},styles.bottomContent2]}> Resend</Text>
+                <Text style={[{}, styles.bottomContent2]}> Resend</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -215,7 +267,7 @@ const styles = StyleSheet.create({
     height: 200,
     alignSelf: 'center',
     resizeMode: 'contain',
-    position: 'relative',
+
     top: 70,
   },
   Button: {
@@ -281,12 +333,12 @@ const styles = StyleSheet.create({
   bottomContent: {
     color: Theme.white,
     fontSize: 15,
-    fontFamily:"OpenSans-Regular"
+    fontFamily: 'OpenSans-Regular',
   },
   bottomContent2: {
     color: Theme.primary,
     fontSize: 15,
-    fontFamily:"OpenSans-Regular"
+    fontFamily: 'OpenSans-Regular',
   },
 });
 

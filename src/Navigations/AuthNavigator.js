@@ -1,11 +1,11 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Signin from '../Screens/Signin';
-import Signup from '../Screens/Signup';
-import Otp from '../Screens/Otp';
-import Addprofile from '../Screens/Addprofile';
-import Wellcomepage from '../Screens/Wellcomepage';
+import Signin from './../Screens/AuthPage/Signin'
+import Signup from './../Screens/AuthPage/Signup'
+import Otp from './../Screens/AuthPage/Otp'
+import Addprofile from './../Screens/AuthPage/Addprofile'
+import Wellcomepage from './../Screens/AuthPage/Wellcomepage'
 
 
 

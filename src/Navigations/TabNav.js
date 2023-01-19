@@ -13,51 +13,45 @@ import Directory from '../Screens/Directory';
 import Favorites from '../Screens/Favorites';
 import Account from '../Screens/Account';
 import Theme from '../Components/common/Theme';
+import HomeNavigator from './HomeNavigator';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNav() {
   return (
     <Tab.Navigator
-      initialRouteName="HomeNavigator"
+      initialRouteName="Homepage"
       activeColor="#f0edf6"
-      inactiveColor="#3e2465"
-      //   barStyle={{
-      //     position: 'absolute',
-      //     backgroundColor: Theme.secondary,
-      //     borderRadius: 50,
-      //     bottom: 10,
-      //     marginHorizontal: 15,
-      //     height: 30,
-      //     justifyContent: 'center',
-      //     alignItems: 'center',
-      //     paddingHorizontal: 10,
-      //   }}
+      // inactiveColor="#3e2465"
+      // style={{
+      //   position: 'absolute',
+      //   backgroundColor: Theme.secondary,
+      //   borderRadius: 50,
+      //   bottom: 10,
+      //   marginHorizontal: 15,
+      //   height: 30,
+      //   justifyContent: 'center',
+      //   alignItems: 'center',
+      //   paddingHorizontal: 10,
+      // }}
       screenOptions={{
         headerShown: false,
-      }}
-
-      // labeled={false}
-    >
-      {/* <Tab.Screen name="Homepage"
-            component={Homepage}
-              
-                options={{
-                    // tabBarLabel: () => { return null },
-                    
-                    // tabBarLabel: <Text style={{color:color}}>ksjdhfjsjg</Text> ,
-                   
-                    
-                   
-
-                    tabBarIcon: ({ color }) => (
-                        <Octicons name="arrow-switch" color={color} size={20} />
-                       
-                        
-                    ),
-                   
-                }}   /> */}
-
+        tabBarStyle: { 
+          //  position: 'absolute',
+        // backgroundColor: Theme.secondary,
+        // borderRadius: 50,
+        // bottom: 10,
+        // marginHorizontal: 15,
+        height: 62,
+        borderTopRightRadius:25,
+        borderTopLeftRadius:25,
+        width:"100%"
+        // paddingHorizontal:15
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // paddingHorizontal: 10,
+       },
+      }}>
       <Tab.Screen
         name="Homepage"
         component={Homepage}
@@ -65,12 +59,18 @@ export default function TabNav() {
           tabBarLabel: () => {
             return null;
           },
+        //   tabBarStyle: { 
+     
+        //   width:"100%"
+
+        //  },
           tabBarIcon: ({focused, color}) => {
             return (
               <>
                 {focused == true ? (
                   <TouchableOpacity
                     style={{
+                      width:"100%",
                       padding: 10,
                       alignItems: 'center',
                       flexDirection: 'column',
@@ -128,6 +128,11 @@ export default function TabNav() {
           tabBarLabel: () => {
             return null;
           },
+          // tabBarStyle: { 
+     
+          //   width:"100%"
+  
+          //  },
           tabBarIcon: ({focused, color}) => {
             return (
               <>
@@ -186,6 +191,11 @@ export default function TabNav() {
           tabBarLabel: () => {
             return null;
           },
+          // tabBarStyle: { 
+     
+          //   width:"100%"
+  
+          //  },
           tabBarIcon: ({focused, color}) => {
             return (
               <>
@@ -247,12 +257,18 @@ export default function TabNav() {
           tabBarLabel: () => {
             return null;
           },
+          // tabBarStyle: { 
+     
+          //   width:"100%"
+  
+          //  },
           tabBarIcon: ({focused, color}) => {
             return (
               <>
                 {focused == true ? (
                   <TouchableOpacity
                     style={{
+                      width:"100%",
                       padding: 10,
                       alignItems: 'center',
                       flexDirection: 'column',

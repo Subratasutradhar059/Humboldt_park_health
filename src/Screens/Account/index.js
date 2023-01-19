@@ -43,6 +43,9 @@ const Account = ({navigation}) => {
             />
           </View> */}
 
+
+          <SafeAreaView>
+
           <View
             style={{
               flexDirection: 'row',
@@ -69,7 +72,10 @@ const Account = ({navigation}) => {
             </View>
           </View>
 
-          <View
+          <TouchableOpacity
+          onPress={()=>{
+            navigation.navigate('EditProfile')
+          }}
             style={{
               backgroundColor: Theme.primary,
               width: '100%',
@@ -89,7 +95,7 @@ const Account = ({navigation}) => {
               }}>
               Edit
             </Text>
-          </View>
+          </TouchableOpacity>
 
           <View
             style={{
@@ -387,6 +393,66 @@ const Account = ({navigation}) => {
               Imaging
             </Text>
           </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              paddingVertical: 10,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Cardiac
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                // paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              Imaging
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              paddingVertical: 10,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+
+                // marginTop: 15,
+                fontWeight: '800',
+                color: Theme.lightgray,
+              }}>
+              Cardiac
+            </Text>
+            <Text
+              // Bold
+              style={{
+                fontSize: 18,
+                // paddingVertical: 10,
+                // marginTop: 15,
+                fontWeight: '600',
+                color: Theme.lightgray,
+              }}>
+              Imaging
+            </Text>
+          </View>
+          </SafeAreaView>
         </>
       )}
     </SafeAreaView>

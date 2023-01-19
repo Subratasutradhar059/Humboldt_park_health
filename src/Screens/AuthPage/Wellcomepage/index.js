@@ -11,10 +11,10 @@ import React, {useState} from 'react';
 
 import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
-import GlobalButton from '../../Components/common/GlobalButton/GlobalButton';
+import GlobalButton from '../../../Components/common/GlobalButton/GlobalButton';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Theme from '../../Components/common/Theme';
-import Text from '../../Components/common/Text';
+import Theme from '../../../Components/common/Theme';
+import Text from '../../../Components/common/Text';
 
 const Wellcomepage = ({navigation}) => {
   const [loader, setLoader] = useState(false);
@@ -37,12 +37,12 @@ const Wellcomepage = ({navigation}) => {
           <StatusBar backgroundColor="#fff" />
 
           <Image
-            source={require('../../Assets/Images/AppLogo.png')}
+            source={require('../../../Assets/Images/AppLogo.png')}
             style={styles.appLogoStyle}
             resizeMode="contain"
           />
           <Image
-            source={require('../../Assets/Images/wellcomeimage.png')}
+            source={require('../../../Assets/Images/wellcomeimage.png')}
             style={styles.imageStyle}
             resizeMode="contain"
           />
