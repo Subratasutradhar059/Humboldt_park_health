@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   TextInput,
   ActivityIndicator,
+  ScrollView,
 } from 'react-native';
 import React, {useState} from 'react';
 import {Formik, Form, Field} from 'formik';
@@ -15,11 +16,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Checkbox} from 'react-native-paper';
 import GlobalButton from '../../Components/common/GlobalButton/GlobalButton';
 import Theme from '../../Components/common/Theme';
-import {Fonts} from '../../Components/common/CustomText';
+
 import Text from '../../Components/common/Text';
 import NavigationHeaders from '../../Components/common/NavigationHeaders';
 
-const EditProfile = ({navigation,route}) => {
+const EditProfile = ({navigation, route}) => {
   const [loader, setLoader] = useState(false);
   const [checked, setChecked] = useState(true);
 
@@ -27,603 +28,442 @@ const EditProfile = ({navigation,route}) => {
     firstname: Yup.string().required('First name Is Required To Continue'),
     lastname: Yup.string().required('Last Name Is Required To Continue'),
     email: Yup.string().required('Email Id Is Required To Continue'),
+    phone: Yup.string()
+      .min(10, 'min 10 digit is require ')
+      .max(10, 'max 10 digit allowed')
+      .required('Mobile Number Is Required To Continue'),
+    city: Yup.string().required('City Is Required To Continue'),
+    state: Yup.string().required('state Is Required To Continue'),
+    zipcode: Yup.string().required('Zipcode  Is Required To Continue'),
   });
-
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: Theme.white}}>
-      {loader == true ? (
-        <View style={styles.LoadarView}>
-          <ActivityIndicator size={'large'} color={Theme.white} />
-        </View>
-      ) : (
-        <>
-          <StatusBar backgroundColor={Theme.white} />
+      <Formik
+        validationSchema={SignInSchema}
+        initialValues={{
+          firstname: '',
+          lastname: '',
+          email: '',
+          phone: '',
+          phone2: '',
+          city: '',
+          state: '',
+          zipcode: '',
+          emailoptional: '',
+        }}
+        onSubmit={values => {
+          handleLogin(values);
+        }}>
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          touched,
+          isValid,
+        }) => (
+          <>
+            <ScrollView>
+              {loader == true ? (
+                <View style={styles.LoadarView}>
+                  <ActivityIndicator size={'large'} color={Theme.white} />
+                </View>
+              ) : (
+                <>
+                  <StatusBar backgroundColor={Theme.white} />
 
-          <View>
-            <NavigationHeaders
-              onPress={() => {
-                navigation.goBack();
-              }}
-              title="Account"
-            />
-          </View>
-
-       
-
-     
-
-          <View
-            style={{
-              // backgroundColor: 'red',
-              marginVertical: 40,
-              // width: '100%',
-              // width: 150,
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative',
-              alignSelf: 'center',
-            }}>
-            <Image
-              source={require('../../Assets/Images/referrals.png')}
-              style={[styles.ProfileImage]}
-            />
-
-            <View
-              style={{
-                position: 'absolute',
-                bottom: 0,
-                right: 20,
-                backgroundColor: Theme.secondary,
-                padding: 6,
-                borderRadius: 100,
-                borderWidth: 3,
-                borderColor: '#fff',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <Image
-                source={require('../../Assets/Images/editicon.png')}
-                style={styles.iconStyle}
-                resizeMode="contain"
-              />
-            </View>
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <Text
-              style={{
-                paddingHorizontal: 20,
-                // paddingVertical: 10,
-                // marginTop: 15,
-                fontSize: 20,
-                fontWeight: '700',
-                color: Theme.lightgray,
-              }}>
-              Edit profile
-            </Text>
-          </View>
-
-          <Formik
-              validationSchema={SignInSchema}
-              initialValues={{firstname: '', lastname: '', email: ''}}
-              onSubmit={values => {
-                handleLogin(values);
-              }}>
-              {({
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                values,
-                errors,
-                touched,
-                isValid,
-              }) => (
-                <View style={{marginTop: 30, paddingHorizontal: 7}}>
-                  <View
-                    style={[
-                      styles.textInput,
-                      {flexDirection: 'row', alignItems: 'center'},
-                    ]}>
-                    <View
-                      style={{
-                        width: 25,
-                        height: 25,
-                        borderWidth: 1,
-                        borderRadius: 100,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        borderColor: Theme.lightgray,
-                        marginHorizontal: 7,
-                      }}>
-                      <Ionicons
-                        style={styles.searchIcon}
-                        name="person-outline"
-                        color={Theme.lightgray}
-                        size={13}
-                      />
-                    </View>
-                    <TextInput
-                      style={{
-                        color: Theme.lightgray,
-                        fontWeight: '600',
-                        fontSize: 16,
+                  <View>
+                    <NavigationHeaders
+                      onPress={() => {
+                        navigation.goBack();
                       }}
-                      placeholder="First Name"
-                      placeholderTextColor={Theme.lightgray}
-                      keyboardType="phone-pad"
-                      onChangeText={handleChange('firstname')}
-                      onBlur={handleBlur('firstname')}
-                      value={values.firstname}
-                      maxLength={10}
+                      title="Account"
                     />
                   </View>
-                  {errors.firstname && touched.firstname && (
-                    <View
-                      style={{
-                        width: '90%',
-                        alignSelf: 'center',
-                        paddingTop: 10,
-                      }}>
-                      <Text style={{fontSize: 12, color: 'red'}}>
-                        {errors.firstname}
-                      </Text>
-                    </View>
-                  )}
 
                   <View
-                    style={[
-                      styles.textInput,
-                      {flexDirection: 'row', alignItems: 'center'},
-                    ]}>
+                    style={{
+                      // backgroundColor: 'red',
+                      marginVertical: 40,
+                      // width: '100%',
+                      // width: 150,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      position: 'relative',
+                      alignSelf: 'center',
+                    }}>
+                    <Image
+                      source={require('../../Assets/Images/referrals.png')}
+                      style={[styles.ProfileImage]}
+                    />
+
                     <View
                       style={{
-                        width: 25,
-                        height: 25,
-                        borderWidth: 1,
+                        position: 'absolute',
+                        bottom: 0,
+                        right: 20,
+                        backgroundColor: Theme.secondary,
+                        padding: 6,
                         borderRadius: 100,
+                        borderWidth: 3,
+                        borderColor: '#fff',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        borderColor: Theme.lightgray,
-                        marginHorizontal: 7,
                       }}>
-                      <Ionicons
-                        style={styles.searchIcon}
-                        name="person-outline"
-                        color={Theme.lightgray}
-                        size={13}
+                      <Image
+                        source={require('../../Assets/Images/editicon.png')}
+                        style={styles.iconStyle}
+                        resizeMode="contain"
                       />
                     </View>
-                    <TextInput
-                      style={{
-                        color: Theme.lightgray,
-                        fontWeight: '600',
-                        fontSize: 16,
-                      }}
-                      placeholder="Last Name"
-                      placeholderTextColor={Theme.lightgray}
-                      keyboardType="phone-pad"
-                      onChangeText={handleChange('lastname')}
-                      onBlur={handleBlur('lastname')}
-                      value={values.lastname}
-                      maxLength={10}
-                    />
                   </View>
-                  {errors.lastname && touched.lastname && (
-                    <View
+                  <View style={{alignItems: 'center'}}>
+                    <Text
                       style={{
-                        width: '90%',
-                        alignSelf: 'center',
-                        paddingTop: 10,
+                        paddingHorizontal: 20,
+                        // paddingVertical: 10,
+                        // marginTop: 15,
+                        fontSize: 20,
+                        fontWeight: '700',
+                        color: Theme.lightgray,
                       }}>
-                      <Text style={{fontSize: 12, color: 'red'}}>
-                        {errors.lastname}
-                      </Text>
-                    </View>
-                  )}
+                      Edit profile
+                    </Text>
+                  </View>
 
-                    
+                  <View style={{marginTop: 30, paddingHorizontal: 15}}>
+                    <View
+                      style={[
+                        styles.textInput,
+                        {flexDirection: 'row', alignItems: 'center'},
+                      ]}>
                       <View
-                        style={[
-                          styles.textInput,
-                          {flexDirection: 'row', alignItems: 'center'},
-                        ]}>
-                        <View
-                          style={{
-                            width: 25,
-                            height: 25,
-                            borderWidth: 1,
-                            borderRadius: 100,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderColor: Theme.lightgray,
-                            marginHorizontal: 7,
-                          }}>
-                          <Ionicons
-                            style={styles.searchIcon}
-                            name="mail-outline"
-                            color={Theme.lightgray}
-                            size={13}
-                          />
-                        </View>
-                        <TextInput
-                          style={{
-                            color: Theme.lightgray,
-                            fontWeight: '600',
-                            fontSize: 16,
-                          }}
-                          placeholder="Email"
-                          placeholderTextColor={Theme.lightgray}
-                          keyboardType="phone-pad"
-                          onChangeText={handleChange('email')}
-                          onBlur={handleBlur('email')}
-                          value={values.email}
-                          maxLength={10}
+                        style={styles.textinputIcon}>
+                        <Ionicons
+                          style={styles.searchIcon}
+                          name="person-outline"
+                          color={Theme.lightgray}
+                          size={13}
                         />
                       </View>
-                      {errors.email && touched.email && (
-                        <View
-                          style={{
-                            width: '90%',
-                            alignSelf: 'center',
-                            paddingTop: 10,
-                          }}>
-                          <Text style={{fontSize: 12, color: 'red'}}>
-                            {errors.email}
-                          </Text>
-                        </View>
-                      )}
-                  
-             
-                    
-
-         
-                    
+                      <TextInput
+                        style={styles.textinputstyle}
+                        placeholder="First Name"
+                        placeholderTextColor={Theme.lightgray}
+                        keyboardType="phone-pad"
+                        onChangeText={handleChange('firstname')}
+                        onBlur={handleBlur('firstname')}
+                        value={values.firstname}
+                        maxLength={10}
+                      />
+                    </View>
+                    {errors.firstname && touched.firstname && (
                       <View
-                        style={{
-                          backgroundColor: Theme.primary,
-                          width: '100%',
-                          height: 40,
-                          // marginTop: 10,
-                          alignItems: 'flex-start',
-                          justifyContent: 'flex-start',
-                          marginBottom: 10,
-                        }}>
-                        <Text
-                          Bold
-                          style={{
-                            paddingHorizontal: 20,
-                            paddingVertical: 10,
-                            // marginTop: 15,
-                            fontWeight: '500',
-                            color: '#fff',
-                          }}>
-                          Education & Credentials
+                        style={styles.errorstyle}>
+                        <Text style={{fontSize: 12, color: 'red'}}>
+                          {errors.firstname}
                         </Text>
                       </View>
+                    )}
 
+                    <View
+                      style={[
+                        styles.textInput,
+                        {flexDirection: 'row', alignItems: 'center'},
+                      ]}>
                       <View
-                        style={[
-                          styles.textInput,
-                          {flexDirection: 'row', alignItems: 'center'},
-                        ]}>
-                        <View
-                          style={{
-                            width: 25,
-                            height: 25,
-                            borderWidth: 1,
-                            borderRadius: 100,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderColor: Theme.lightgray,
-                            marginHorizontal: 7,
-                          }}>
-                          <Ionicons
-                            style={styles.searchIcon}
-                            name="mail-outline"
-                            color={Theme.lightgray}
-                            size={13}
-                          />
-                        </View>
-                        <TextInput
-                          style={{
-                            color: Theme.lightgray,
-                            fontWeight: '600',
-                            fontSize: 16,
-                          }}
-                          placeholder="Phone Number"
-                          placeholderTextColor={Theme.lightgray}
-                          keyboardType="phone-pad"
-                          onChangeText={handleChange('email')}
-                          onBlur={handleBlur('email')}
-                          value={values.email}
-                          maxLength={10}
+                       style={styles.textinputIcon}>
+                        <Ionicons
+                          style={styles.searchIcon}
+                          name="person-outline"
+                          color={Theme.lightgray}
+                          size={13}
                         />
                       </View>
-
-                      {errors.email && touched.email && (
-                        <View
-                          style={{
-                            width: '90%',
-                            alignSelf: 'center',
-                            paddingTop: 10,
-                          }}>
-                          <Text style={{fontSize: 12, color: 'red'}}>
-                            {errors.email}
-                          </Text>
-                        </View>
-                      )}
-
+                      <TextInput
+                        style={styles.textinputstyle}
+                        placeholder="Last Name"
+                        placeholderTextColor={Theme.lightgray}
+                        keyboardType="phone-pad"
+                        onChangeText={handleChange('lastname')}
+                        onBlur={handleBlur('lastname')}
+                        value={values.lastname}
+                        maxLength={10}
+                      />
+                    </View>
+                    {errors.lastname && touched.lastname && (
                       <View
-                        style={[
-                          styles.textInput,
-                          {flexDirection: 'row', alignItems: 'center'},
-                        ]}>
-                        <View
-                          style={{
-                            width: 25,
-                            height: 25,
-                            borderWidth: 1,
-                            borderRadius: 100,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderColor: Theme.lightgray,
-                            marginHorizontal: 7,
-                          }}>
-                          <Ionicons
-                            style={styles.searchIcon}
-                            name="mail-outline"
-                            color={Theme.lightgray}
-                            size={13}
-                          />
-                        </View>
-                        <TextInput
-                          style={{
-                            color: Theme.lightgray,
-                            fontWeight: '600',
-                            fontSize: 16,
-                          }}
-                          placeholder="Phone Number 2 (Optional)"
-                          placeholderTextColor={Theme.lightgray}
-                          keyboardType="phone-pad"
-                          onChangeText={handleChange('email')}
-                          onBlur={handleBlur('email')}
-                          value={values.email}
-                          maxLength={10}
+                      style={styles.errorstyle}>
+                        <Text style={{fontSize: 12, color: 'red'}}>
+                          {errors.lastname}
+                        </Text>
+                      </View>
+                    )}
+
+                    <View
+                      style={[
+                        styles.textInput,
+                        {flexDirection: 'row', alignItems: 'center'},
+                      ]}>
+                      <View
+                        style={styles.textinputIcon}>
+                        <Ionicons
+                          style={styles.searchIcon}
+                          name="mail-outline"
+                          color={Theme.lightgray}
+                          size={13}
                         />
                       </View>
-
-                      {errors.email && touched.email && (
-                        <View
-                          style={{
-                            width: '90%',
-                            alignSelf: 'center',
-                            paddingTop: 10,
-                          }}>
-                          <Text style={{fontSize: 12, color: 'red'}}>
-                            {errors.email}
-                          </Text>
-                        </View>
-                      )}
-
+                      <TextInput
+                       style={styles.textinputstyle}
+                        placeholder="Email"
+                        placeholderTextColor={Theme.lightgray}
+                        keyboardType="phone-pad"
+                        onChangeText={handleChange('email')}
+                        onBlur={handleBlur('email')}
+                        value={values.email}
+                        maxLength={10}
+                      />
+                    </View>
+                    {errors.email && touched.email && (
                       <View
-                        style={[
-                          styles.textInput,
-                          {flexDirection: 'row', alignItems: 'center'},
-                        ]}>
-                        <View
-                          style={{
-                            width: 25,
-                            height: 25,
-                            borderWidth: 1,
-                            borderRadius: 100,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderColor: Theme.lightgray,
-                            marginHorizontal: 7,
-                          }}>
-                          <Ionicons
-                            style={styles.searchIcon}
-                            name="mail-outline"
-                            color={Theme.lightgray}
-                            size={13}
-                          />
-                        </View>
-                        <TextInput
-                          style={{
-                            color: Theme.lightgray,
-                            fontWeight: '600',
-                            fontSize: 16,
-                          }}
-                          placeholder="City"
-                          placeholderTextColor={Theme.lightgray}
-                          keyboardType="phone-pad"
-                          onChangeText={handleChange('email')}
-                          onBlur={handleBlur('email')}
-                          value={values.email}
-                          maxLength={10}
+                      style={styles.errorstyle}>
+                        <Text style={{fontSize: 12, color: 'red'}}>
+                          {errors.email}
+                        </Text>
+                      </View>
+                    )}
+
+                    <View
+                      style={{
+                        backgroundColor: Theme.primary,
+                        width: '100%',
+                        height: 40,
+                        // marginTop: 10,
+                        alignItems: 'flex-start',
+                        justifyContent: 'flex-start',
+                        marginBottom: 10,
+                      }}>
+                      <Text
+                        Bold
+                        style={{
+                          paddingHorizontal: 20,
+                          paddingVertical: 10,
+                          // marginTop: 15,
+                          fontWeight: '500',
+                          color: '#fff',
+                        }}>
+                        Education & Credentials
+                      </Text>
+                    </View>
+
+                    <View
+                      style={[
+                        styles.textInput,
+                        {flexDirection: 'row', alignItems: 'center'},
+                      ]}>
+                      <View
+                        style={styles.textinputIcon}>
+                        <Ionicons
+                          style={styles.searchIcon}
+                          name="mail-outline"
+                          color={Theme.lightgray}
+                          size={13}
                         />
                       </View>
+                      <TextInput
+                       style={styles.textinputstyle}
+                        placeholder="Phone Number"
+                        placeholderTextColor={Theme.lightgray}
+                        keyboardType="phone-pad"
+                        onChangeText={handleChange('phone')}
+                        onBlur={handleBlur('phone')}
+                        value={values.phone}
+                        maxLength={10}
+                      />
+                    </View>
 
-                      {errors.email && touched.email && (
-                        <View
-                          style={{
-                            width: '90%',
-                            alignSelf: 'center',
-                            paddingTop: 10,
-                          }}>
-                          <Text style={{fontSize: 12, color: 'red'}}>
-                            {errors.email}
-                          </Text>
-                        </View>
-                      )}
-
+                    {errors.phone && touched.phone && (
                       <View
-                        style={[
-                          styles.textInput,
-                          {flexDirection: 'row', alignItems: 'center'},
-                        ]}>
-                        <View
-                          style={{
-                            width: 25,
-                            height: 25,
-                            borderWidth: 1,
-                            borderRadius: 100,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderColor: Theme.lightgray,
-                            marginHorizontal: 7,
-                          }}>
-                          <Ionicons
-                            style={styles.searchIcon}
-                            name="mail-outline"
-                            color={Theme.lightgray}
-                            size={13}
-                          />
-                        </View>
-                        <TextInput
-                          style={{
-                            color: Theme.lightgray,
-                            fontWeight: '600',
-                            fontSize: 16,
-                          }}
-                          placeholder="State"
-                          placeholderTextColor={Theme.lightgray}
-                          keyboardType="phone-pad"
-                          onChangeText={handleChange('email')}
-                          onBlur={handleBlur('email')}
-                          value={values.email}
-                          maxLength={10}
+                      style={styles.errorstyle}>
+                        <Text style={{fontSize: 12, color: 'red'}}>
+                          {errors.phone}
+                        </Text>
+                      </View>
+                    )}
+
+                    <View
+                      style={[
+                        styles.textInput,
+                        {flexDirection: 'row', alignItems: 'center'},
+                      ]}>
+                      <View
+                        style={styles.textinputIcon}>
+                        <Ionicons
+                          style={styles.searchIcon}
+                          name="mail-outline"
+                          color={Theme.lightgray}
+                          size={13}
                         />
                       </View>
+                      <TextInput
+                        style={styles.textinputstyle}
+                        placeholder="Phone Number 2 (Optional)"
+                        placeholderTextColor={Theme.lightgray}
+                        keyboardType="phone-pad"
+                        onChangeText={handleChange('phone2')}
+                        onBlur={handleBlur('phone2')}
+                        value={values.phone2}
+                        maxLength={10}
+                      />
+                    </View>
 
-                      {errors.email && touched.email && (
-                        <View
-                          style={{
-                            width: '90%',
-                            alignSelf: 'center',
-                            paddingTop: 10,
-                          }}>
-                          <Text style={{fontSize: 12, color: 'red'}}>
-                            {errors.email}
-                          </Text>
-                        </View>
-                      )}
-
+                    <View
+                      style={[
+                        styles.textInput,
+                        {flexDirection: 'row', alignItems: 'center'},
+                      ]}>
                       <View
-                        style={[
-                          styles.textInput,
-                          {flexDirection: 'row', alignItems: 'center'},
-                        ]}>
-                        <View
-                          style={{
-                            width: 25,
-                            height: 25,
-                            borderWidth: 1,
-                            borderRadius: 100,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderColor: Theme.lightgray,
-                            marginHorizontal: 7,
-                          }}>
-                          <Ionicons
-                            style={styles.searchIcon}
-                            name="mail-outline"
-                            color={Theme.lightgray}
-                            size={13}
-                          />
-                        </View>
-                        <TextInput
-                          style={{
-                            color: Theme.lightgray,
-                            fontWeight: '600',
-                            fontSize: 16,
-                          }}
-                          placeholder="Zip Code"
-                          placeholderTextColor={Theme.lightgray}
-                          keyboardType="phone-pad"
-                          onChangeText={handleChange('email')}
-                          onBlur={handleBlur('email')}
-                          value={values.email}
-                          maxLength={10}
+                        style={styles.textinputIcon}>
+                        <Ionicons
+                          style={styles.searchIcon}
+                          name="mail-outline"
+                          color={Theme.lightgray}
+                          size={13}
                         />
                       </View>
+                      <TextInput
+                       style={styles.textinputstyle}
+                        placeholder="City"
+                        placeholderTextColor={Theme.lightgray}
+                        keyboardType="phone-pad"
+                        onChangeText={handleChange('city')}
+                        onBlur={handleBlur('city')}
+                        value={values.city}
+                        maxLength={10}
+                      />
+                    </View>
 
-                      {errors.email && touched.email && (
-                        <View
-                          style={{
-                            width: '90%',
-                            alignSelf: 'center',
-                            paddingTop: 10,
-                          }}>
-                          <Text style={{fontSize: 12, color: 'red'}}>
-                            {errors.email}
-                          </Text>
-                        </View>
-                      )}
-
+                    {errors.city && touched.city && (
                       <View
-                        style={[
-                          styles.textInput,
-                          {flexDirection: 'row', alignItems: 'center'},
-                        ]}>
-                        <View
-                          style={{
-                            width: 25,
-                            height: 25,
-                            borderWidth: 1,
-                            borderRadius: 100,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderColor: Theme.lightgray,
-                            marginHorizontal: 7,
-                          }}>
-                          <Ionicons
-                            style={styles.searchIcon}
-                            name="mail-outline"
-                            color={Theme.lightgray}
-                            size={13}
-                          />
-                        </View>
-                        <TextInput
-                          style={{
-                            color: Theme.lightgray,
-                            fontWeight: '600',
-                            fontSize: 16,
-                          }}
-                          placeholder="Email (Optional)"
-                          placeholderTextColor={Theme.lightgray}
-                          keyboardType="phone-pad"
-                          onChangeText={handleChange('email')}
-                          onBlur={handleBlur('email')}
-                          value={values.email}
-                          maxLength={10}
+                      style={styles.errorstyle}>
+                        <Text style={{fontSize: 12, color: 'red'}}>
+                          {errors.city}
+                        </Text>
+                      </View>
+                    )}
+
+                    <View
+                      style={[
+                        styles.textInput,
+                        {flexDirection: 'row', alignItems: 'center'},
+                      ]}>
+                      <View
+                        style={styles.textinputIcon}>
+                        <Ionicons
+                          style={styles.searchIcon}
+                          name="mail-outline"
+                          color={Theme.lightgray}
+                          size={13}
                         />
                       </View>
+                      <TextInput
+                        style={styles.textinputstyle}
+                        placeholder="State"
+                        placeholderTextColor={Theme.lightgray}
+                        keyboardType="phone-pad"
+                        onChangeText={handleChange('state')}
+                        onBlur={handleBlur('state')}
+                        value={values.state}
+                        maxLength={10}
+                      />
+                    </View>
 
-                      {errors.email && touched.email && (
-                        <View
-                          style={{
-                            width: '90%',
-                            alignSelf: 'center',
-                            paddingTop: 10,
-                          }}>
-                          <Text style={{fontSize: 12, color: 'red'}}>
-                            {errors.email}
-                          </Text>
-                        </View>
-                      )}
-                    
-                </View>
+                    {errors.state && touched.state && (
+                      <View
+                      style={styles.errorstyle}>
+                        <Text style={{fontSize: 12, color: 'red'}}>
+                          {errors.state}
+                        </Text>
+                      </View>
+                    )}
+
+                    <View
+                      style={[
+                        styles.textInput,
+                        {flexDirection: 'row', alignItems: 'center'},
+                      ]}>
+                      <View
+                        style={styles.textinputIcon}>
+                        <Ionicons
+                          style={styles.searchIcon}
+                          name="mail-outline"
+                          color={Theme.lightgray}
+                          size={13}
+                        />
+                      </View>
+                      <TextInput
+                        style={styles.textinputstyle}
+                        placeholder="Zip Code"
+                        placeholderTextColor={Theme.lightgray}
+                        keyboardType="phone-pad"
+                        onChangeText={handleChange('zipcode')}
+                        onBlur={handleBlur('zipcode')}
+                        value={values.zipcode}
+                        maxLength={10}
+                      />
+                    </View>
+
+                    {errors.zipcode && touched.zipcode && (
+                      <View
+                      style={styles.errorstyle}>
+                        <Text style={{fontSize: 12, color: 'red'}}>
+                          {errors.zipcode}
+                        </Text>
+                      </View>
+                    )}
+
+                    <View
+                      style={[
+                        styles.textInput,
+                        {flexDirection: 'row', alignItems: 'center'},
+                      ]}>
+                      <View
+                        style={styles.textinputIcon}>
+                        <Ionicons
+                          style={styles.searchIcon}
+                          name="mail-outline"
+                          color={Theme.lightgray}
+                          size={13}
+                        />
+                      </View>
+                      <TextInput
+                       style={styles.textinputstyle}
+                        placeholder="Email (Optional)"
+                        placeholderTextColor={Theme.lightgray}
+                        keyboardType="phone-pad"
+                        onChangeText={handleChange('emailoptional')}
+                        onBlur={handleBlur('emailoptional')}
+                        value={values.emailoptional}
+                        maxLength={10}
+                      />
+                    </View>
+                  </View>
+                </>
               )}
-            </Formik>
-
-          
-       
-
-       
-          
-        </>
-      )}
+            </ScrollView>
+            <View style={{marginHorizontal: 20}}>
+              <GlobalButton
+                title={'Sign In '}
+                inlineStyle={{margin: 20}}
+                onPress={() => handleSubmit()}
+              />
+            </View>
+          </>
+        )}
+      </Formik>
     </SafeAreaView>
   );
 };
@@ -683,7 +523,26 @@ const styles = StyleSheet.create({
     // resizeMode: 'contain',
     position: 'relative',
   },
-
+  errorstyle:{
+    width: '97%',
+    alignSelf: 'center',
+    paddingBottom:10,
+  },
+  textinputIcon:{
+    width: 25,
+    height: 25,
+    borderWidth: 1,
+    borderRadius: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: Theme.lightgray,
+    marginHorizontal: 7,
+  },
+  textinputstyle:{
+    color: Theme.lightgray,
+    fontWeight: '600',
+    fontSize: 16,
+  }
 });
 
 export default EditProfile;

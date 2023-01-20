@@ -18,6 +18,7 @@ import Theme from '../../Components/common/Theme';
 import {Fonts} from '../../Components/common/CustomText';
 import Text from '../../Components/common/Text';
 import NavigationHeaders from '../../Components/common/NavigationHeaders';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Account = ({navigation}) => {
   const [loader, setLoader] = useState(false);
@@ -44,7 +45,7 @@ const Account = ({navigation}) => {
           </View> */}
 
 
-          <SafeAreaView>
+          <ScrollView>
 
           <View
             style={{
@@ -452,7 +453,7 @@ const Account = ({navigation}) => {
               Imaging
             </Text>
           </View>
-          </SafeAreaView>
+          </ScrollView>
         </>
       )}
     </SafeAreaView>
